@@ -40,6 +40,7 @@ int main(){
     //Segundo Objeto
     coche CocheMaria;
 
+    std::printf("El color del coche es: %s\n", CocheJose.color.c_str());
     CocheJose.encender();
     CocheJose.color = "Rojo";
     std::cout << "El color del coche de Jose es: " << CocheJose.color << std::endl;
