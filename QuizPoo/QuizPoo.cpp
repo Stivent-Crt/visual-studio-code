@@ -45,8 +45,9 @@ public:
             std::cout << "Producto no reconocido" << std::endl;
             precio = 0.0;
         }
-        std::cout << "El precio total del producto es: " << precio << std::endl;
+        std::cout << "El precio del producto sin descuento es: " << precio << std::endl;
     }
+};
     class mecato {
     //atributos
     public:
@@ -71,30 +72,53 @@ public:
             std::cout << "Producto no reconocido" << std::endl;
             precio = 0.0;
         }
-        std::cout << "El precio total del producto es: " << precio << std::endl;
+        std::cout << "El precio del producto sin descuento es: " << precio << std::endl;
     }
 };
+    class descuento {
+    public:
+        double calcularDescuento(double precio){
+            double descuento = 0.0;
+            if (precio > 10000) {
+                descuento = precio * 0.1; //descuento del 10% para compras mayores a 10000
+                std::cout << "Se le aplica descuento del 10%" << std::endl;
+            } else if (precio > 5000) {
+                descuento = precio * 0.05; //descuento del 5% para compras mayores a 5000
+                std::cout << "Se le aplica descuento del 5%" << std::endl;
+            } else {
+                descuento = 0.0; //sin descuento para compras menores o iguales a 5000
+                std::cout << "No se le aplica descuento" << std::endl;
+            }
+            return descuento;
+        }
+};
 int main(){
+    std::cout << "--- Tienda de Stivent ---- " << std::endl;
+    std::cout << "Productos lacteos disponibles: leche, huevos, queso, queso crema, mantequilla, yogurt" << std::endl;
+    std::cout << "Productos de mecato disponibles: chocorramo, gansito, detodito, galletas festival, nutella, postre yogurt" << std::endl;
+    std::cout << "Recuerde que por compras mayores a 5000 tiene 5% de descuento y por compras mayores a 10000 tiene 10% de descuento" << std::endl;
     std::cout << "Ingrese el producto lacteo que desea comprar: ";
-    std::string productoLacteo;
-    std::cin >> productoLacteo;
+    std::cin >> getProductoLacteo;
     std::cout << "Ingrese la cantidad del producto lacteo que desea comprar: ";
-    int cantidadLacteo; 
-    std::cin >> cantidadLacteo;
+    std::cin >> getCantidadLacteo;
     Lacteos lacteo;
-    lacteo.setProducto(productoLacteo);
-    lacteo.setCantidad(cantidadLacteo);
+    lacteo.setProducto(getProductoLacteo);
+    lacteo.setCantidad(getCantidadLacteo);
     lacteo.calcularPrecio();
     std::cout << "Ingrese el producto de mecato que desea comprar: ";
-    std::string productoMecato;
-    std::cin >> productoMecato;
+    std::cin >> getProductoMecato;
     std::cout << "Ingrese la cantidad del producto de mecato que desea comprar: ";
-    int cantidadMecato;
-    std::cin >> cantidadMecato;
-    mecato mecatito;
-    mecatito.producto = productoMecato;
-    mecatito.cantidad = cantidadMecato;
-    mecatito.calcularPrecio();
-
+    std::cin >> getCantidadMecato;
+    mecato mecato1;
+    mecato1.producto = getProductoMecato;
+    mecato1.cantidad = getCantidadMecato;
+    mecato1.calcularPrecio();
+    double precioTotal = lacteo.precio + mecato1.precio;
+    std::cout << "El precio total de su compra sin descuento es: " << precioTotal << std::endl;
+    descuento descuento1;  
+    double descuentoAplicado = descuento1.calcularDescuento(precioTotal);  
+    double precioFinal = precioTotal - descuentoAplicado;
+    std::cout << "El precio final de su compra con descuento es: " << precioFinal << std::endl;
     return 0;
+
 }
