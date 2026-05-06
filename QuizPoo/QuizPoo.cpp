@@ -98,27 +98,24 @@ int main(){
     std::cout << "Productos de mecato disponibles: chocorramo, gansito, detodito, galletas festival, nutella, postre yogurt" << std::endl;
     std::cout << "Recuerde que por compras mayores a 5000 tiene 5% de descuento y por compras mayores a 10000 tiene 10% de descuento" << std::endl;
     std::cout << "Ingrese el producto lacteo que desea comprar: ";
+    std::string getProductoLacteo;
     std::cin >> getProductoLacteo;
     std::cout << "Ingrese la cantidad del producto lacteo que desea comprar: ";
+    int getCantidadLacteo;
     std::cin >> getCantidadLacteo;
     Lacteos lacteo;
     lacteo.setProducto(getProductoLacteo);
     lacteo.setCantidad(getCantidadLacteo);
     lacteo.calcularPrecio();
     std::cout << "Ingrese el producto de mecato que desea comprar: ";
-    std::cin >> getProductoMecato;
+    std::string productoMecato;
+    std::cin >> productoMecato;
     std::cout << "Ingrese la cantidad del producto de mecato que desea comprar: ";
-    std::cin >> getCantidadMecato;
-    mecato mecato1;
-    mecato1.producto = getProductoMecato;
-    mecato1.cantidad = getCantidadMecato;
-    mecato1.calcularPrecio();
-    double precioTotal = lacteo.precio + mecato1.precio;
-    std::cout << "El precio total de su compra sin descuento es: " << precioTotal << std::endl;
-    descuento descuento1;  
-    double descuentoAplicado = descuento1.calcularDescuento(precioTotal);  
-    double precioFinal = precioTotal - descuentoAplicado;
-    std::cout << "El precio final de su compra con descuento es: " << precioFinal << std::endl;
+    int cantidadMecato;
+    std::cin >> cantidadMecato;
+    mecato mecatito;
+    mecatito.producto = productoMecato;
+    mecatito.cantidad = cantidadMecato;
+    mecatito.calcularPrecio();
     return 0;
-
 }
